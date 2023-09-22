@@ -1,0 +1,121 @@
+
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
+   <style>
+    body{
+  font-family: Calibri, Helvetica, sans-serif;
+
+}
+.container {
+    padding: 50px;
+  background-color: lightblue;
+}
+
+input[type=text], input[type=password],  input[type=email] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password], input[type=email]:focus {
+  background-color: orange;
+  outline: none;
+}
+ div {
+            padding: 10px 0;
+         }
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+    <title>form</title>
+</head>
+<body bgcolor="dark blue">
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" style="color:#ffffff">
+  <div class="container-fluid" >
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+       <!-- <li class="nav-item dropdown {% if 'ecommerceapp:allprocat' in request.path %} active {% endif %}">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#"><nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'papp:fun' %}" style="color:#ffffff;font-size:25px;">Home</a>
+        </li>
+
+
+          </ul>
+    </div>
+
+</nav>
+<img class="my_image my_image_padding" src="{% static 'images/22.png' %}" alt="our products" style="width:1490px; height:350px">
+</div>
+<br>
+<div class="space">
+<form method="post" action="{% url 'p1app:register' %}" >
+
+{% csrf_token %}
+    <div class="container">
+    <center><h1>REGISTRATION FORM</h1></center>
+        <hr>
+
+        <label>User name:</label><input type="text" name="username" placeholder="Enter your user name">
+        <label>First Name:</label><input type="text" name="firstname" placeholder="Enter your first  name">
+        <label>Last name:</label><input type="text" name="lastname" placeholder="Enter your last name">
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Enter your email">
+
+      <br>  <label>Password:</label><input type="password" name="password" placeholder="Enter your password">
+
+        <label>Confirmation password:</label><input type="password" name="cpassword" placeholder="Enter your confirmation password">
+       <center>  <input type="submit" class="registerbtn" value="submit">
+       </input></center>
+    </div>
+        </form></div>
+<div>
+{% for message in messages %}
+<h3 ALIGN="CENTER">{{message}}</h3>
+{% endfor %}
+</div>
+{% endblock %}
+        <div class="footer navbar-fixed-bottom my-footer mx-auto" style="background-color:black">
+  <p class="text-center" style="color:white">@copy; Travel pvt limited</p>
+</div>
+</body>
+</html>
